@@ -14,7 +14,6 @@
             {% endfor %}
             {% if nav_pages %}
                 {% for node in nav_pages %}
-
                     <li id="menu-item-{{ node.pk }}"
                         class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-{{ node.pk }}">
                         <a href="{{ node.get_absolute_url }}">{{ node.title }}</a>
@@ -22,8 +21,7 @@
                 {% endfor %}
             {% endif %}
             <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children">
-
-                <a href="{% url "blog:archives" %}">{% trans 'Article archive' %}</a>
+                <a href="{% url 'blog:archives' %}">{% trans 'Article archive' %}</a>
             </li>
         </ul>
     </div>
