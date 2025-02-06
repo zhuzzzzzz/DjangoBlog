@@ -27,6 +27,8 @@ from djangoblog.elasticsearch_backend import ElasticSearchModelSearchForm
 from djangoblog.feeds import DjangoBlogFeed
 from djangoblog.sitemap import ArticleSiteMap, CategorySiteMap, StaticViewSitemap, TagSiteMap, UserSiteMap
 
+from debug_toolbar.toolbar import debug_toolbar_urls
+
 sitemaps = {
 
     'blog': ArticleSiteMap,
@@ -62,3 +64,4 @@ urlpatterns += i18n_patterns(
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+    urlpatterns += debug_toolbar_urls()

@@ -32,6 +32,11 @@ SECRET_KEY = os.environ.get(
     'DJANGO_SECRET_KEY') or 'n9ceqv38)#&mwuat@(mjb_p%em$e8$qyr#fw9ot!=ba6lijx-6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env_to_bool('DJANGO_DEBUG', True)
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
 # DEBUG = False
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
@@ -60,15 +65,16 @@ INSTALLED_APPS = [
     'oauth',
     'servermanager',
     'owntracks',
-    'compressor'
+    'compressor',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',

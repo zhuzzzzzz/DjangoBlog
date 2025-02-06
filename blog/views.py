@@ -71,6 +71,7 @@ class ArticleListView(ListView):
             article_list = self.get_queryset_data()
             cache.set(cache_key, article_list)
             logger.info('set view cache.key:{key}'.format(key=cache_key))
+            print(article_list)
             return article_list
 
     def get_queryset(self):
