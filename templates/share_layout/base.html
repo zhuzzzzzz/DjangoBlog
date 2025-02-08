@@ -39,6 +39,11 @@
     {% if GLOBAL_HEADER %}
         {{ GLOBAL_HEADER|safe }}
     {% endif %}
+    <style>
+        .login-status-show-text {
+        float: right;
+        }
+    </style>
 </head>
 
 <body class="home blog custom-font-enabled">
@@ -47,7 +52,17 @@
         <hgroup>
             <h1 class="site-title"><a href="/" title="{{ SITE_NAME }}" rel="home">{{ SITE_NAME }}</a>
             </h1>
-            <h2 class="site-description">{{ SITE_DESCRIPTION }}</h2>
+            <h2 class="site-description">
+                {{ SITE_DESCRIPTION }}
+                <span class="login-status-show-text">
+                    {% if user.is_authenticated %}
+                    {{ user.username }}
+                    <a href="{% url 'account:logout' %}" rel="nofollow" style="text-decoration: underline;">{% trans 'logout' %}</a>
+                    {% else %}
+                    <a href="{% url 'account:login' %}" rel="nofollow" style="text-decoration: underline;">{% trans 'login' %}</a>
+                    {% endif %}
+                </span>
+            </h2>
         </hgroup>
         {% load i18n %}
 

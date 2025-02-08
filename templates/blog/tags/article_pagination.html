@@ -1,17 +1,37 @@
 {% load i18n %}
-<nav id="nav-below" class="navigation" role="navigation">
-    <h3 class="assistive-text">
-        {% trans 'article navigation' %}
-    </h3>
-    {% if page_obj.has_next  and next_url%}
-        <div class="nav-previous"><a
-                href="{{ next_url }}"><span
-                class="meta-nav">&larr;</span> {% trans 'earlier articles' %}</a></div>
-    {% endif %}
-    {% if page_obj.has_previous and previous_url %}
-        <div class="nav-next"><a href="{{ previous_url }}">{% trans 'newer articles' %}
-            <span
-                    class="meta-nav">→</span></a>
-        </div>
-    {% endif %}
+<!--<nav id="nav-below" class="navigation" role="navigation">-->
+<!--    <h3 class="assistive-text">-->
+<!--        {% trans 'article navigation' %}-->
+<!--    </h3>-->
+<!--    {% if page_obj.has_next  and next_url%}-->
+<!--        <div class="nav-previous"><a-->
+<!--                href="{{ next_url }}"><span-->
+<!--                class="meta-nav">&larr;</span> {% trans 'earlier articles' %}</a></div>-->
+<!--    {% endif %}-->
+<!--    {% if page_obj.has_previous and previous_url %}-->
+<!--        <div class="nav-next"><a href="{{ previous_url }}">{% trans 'newer articles' %}-->
+<!--            <span-->
+<!--                    class="meta-nav">→</span></a>-->
+<!--        </div>-->
+<!--    {% endif %}-->
+<!--</nav>&lt;!&ndash; .navigation &ndash;&gt;-->
+<nav id="nav-below1" class="navigation" role="navigation">
+    <div class="nav-next">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+
+        <form method="get" action="">
+            <input type="number" name="page" min="1" placeholder="页码" required>
+            <input type="submit" value="GO">
+        </form>
+    </div>
 </nav><!-- .navigation -->

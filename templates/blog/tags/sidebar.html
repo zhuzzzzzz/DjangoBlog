@@ -12,7 +12,6 @@
     </aside>
     {% if extra_sidebars %}
         {% for sidebar in extra_sidebars %}
-
             <aside class="widget_text widget widget_custom_html"><p class="widget-title">
                 {{ sidebar.name }}</p>
                 <div class="textwidget custom-html-widget">
@@ -22,7 +21,6 @@
         {% endfor %}
     {% endif %}
     {% if most_read_articles %}
-
         <aside id="views-4" class="widget widget_views"><p class="widget-title">Views</p>
             <ul>
                 {% for a in most_read_articles %}
@@ -33,7 +31,6 @@
                     </li>
                 {% endfor %}
             </ul>
-
         </aside>
     {% endif %}
     {% if sidebar_categorys %}
@@ -48,7 +45,6 @@
     {% endif %}
     {% if sidebar_comments and  open_site_comment %}
         <aside id="ds-recent-comments-4" class="widget ds-widget-recent-comments"><p class="widget-title">{% trans 'recent comments' %}</p>
-
             <ul id="recentcomments">
                 {% for c in sidebar_comments %}
                     <li class="recentcomments">
@@ -64,7 +60,6 @@
     {% if recent_articles %}
         <aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">{% trans 'recent articles' %}</p>
             <ul>
-
                 {% for a in  recent_articles %}
                     <li><a href="{{ a.get_absolute_url }}" title="{{ a.title }}">
                         {{ a.title }}
@@ -81,7 +76,6 @@
                         <a href="{{ l.link }}" target="_blank" title="{{ l.name }}">{{ l.name }}</a>
                     </li>
                 {% endfor %}
-
             </ul>
         </aside>
     {% endif %}
@@ -104,31 +98,28 @@
             </div>
         </aside>
     {% endif %}
-    <aside id="text-2" class="widget widget_text"><p class="widget-title">{% trans 'Welcome to star or fork the source code of this site' %}</p>
-        <div class="textwidget">
-
-            <p><a href="https://github.com/liangliangyy/DjangoBlog" rel="nofollow"><img
-                    src="https://resource.lylinux.net/img.shields.io/github/stars/liangliangyy/djangoblog.svg?style=social&amp;label=Star"
-                    alt="GitHub stars"></a> <a href="https://github.com/liangliangyy/DjangoBlog" rel="nofollow"><img
-                    src="https://resource.lylinux.net/img.shields.io/github/forks/liangliangyy/djangoblog.svg?style=social&amp;label=Fork"
-                    alt="GitHub forks"></a></p>
-        </div>
-    </aside>
-
+<!--    <aside id="text-2" class="widget widget_text"><p class="widget-title">{% trans 'Welcome to star or fork the source code of this site' %}</p>-->
+<!--        <div class="textwidget">-->
+<!--            <p><a href="https://github.com/liangliangyy/DjangoBlog" rel="nofollow"><img-->
+<!--                    src="https://resource.lylinux.net/img.shields.io/github/stars/liangliangyy/djangoblog.svg?style=social&amp;label=Star"-->
+<!--                    alt="GitHub stars"></a> <a href="https://github.com/liangliangyy/DjangoBlog" rel="nofollow"><img-->
+<!--                    src="https://resource.lylinux.net/img.shields.io/github/forks/liangliangyy/djangoblog.svg?style=social&amp;label=Fork"-->
+<!--                    alt="GitHub forks"></a></p>-->
+<!--        </div>-->
+<!--    </aside>-->
     <aside id="meta-3" class="widget widget_meta"><p class="widget-title">{% trans 'Function' %}</p>
         <ul>
             <li><a href="/admin/" rel="nofollow">{% trans 'management site' %}</a></li>
             {% if user.is_authenticated %}
-                <li><a href="{% url "account:logout" %}" rel="nofollow">{% trans 'logout' %}</a>
+                <li><a href="{% url 'account:logout' %}" rel="nofollow">{% trans 'logout' %}</a>
                 </li>
-
             {% else %}
-                <li><a href="{% url "account:login" %}" rel="nofollow">{% trans 'login' %}</a></li>
+                <li><a href="{% url 'account:login' %}" rel="nofollow">{% trans 'login' %}</a></li>
             {% endif %}
             {% if user.is_superuser %}
                 <li><a href="{% url 'owntracks:show_dates' %}" target="_blank">{% trans 'Track record' %}</a></li>
             {% endif %}
-            <li><a href="http://gitbook.lylinux.net" target="_blank" rel="nofollow">GitBook</a></li>
+<!--            <li><a href="http://gitbook.lylinux.net" target="_blank" rel="nofollow">GitBook</a></li>-->
         </ul>
     </aside>
 

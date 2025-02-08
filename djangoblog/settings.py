@@ -194,7 +194,7 @@ BOOTSTRAP_COLOR_TYPES = [
 ]
 
 # paginate
-PAGINATE_BY = 10
+PAGINATE_BY = 5
 # http cache timeout
 CACHE_CONTROL_MAX_AGE = 2592000
 # cache setting

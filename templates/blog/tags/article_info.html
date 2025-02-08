@@ -6,7 +6,8 @@
     <header class="entry-header">
 
         <h1 class="entry-title">
-            {% if  isindex %}
+<!--            判断是否需要将标题显示为链接, 以及是否需要添加置顶标识-->
+            {% if isindex %}
                 {% if article.article_order > 0 %}
                     <a href="{{ article.get_absolute_url }}"
                        rel="bookmark">【{% trans 'pin to top' %}】{{ article.title }}</a>
@@ -14,12 +15,12 @@
                     <a href="{{ article.get_absolute_url }}"
                        rel="bookmark">{{ article.title }}</a>
                 {% endif %}
-
             {% else %}
                 {{ article.title }}
             {% endif %}
         </h1>
         <div class="comments-link">
+<!--            开放评论的状态下才显示评论链接-->
             {% if article.comment_status == "o" and open_site_comment %}
                 <a href="{{ article.get_absolute_url }}#comments" class="ds-thread-count" data-thread-key="3815"
                    rel="nofollow">
@@ -27,7 +28,7 @@
                     {% if article.comment_set and article.comment_set.count %}
                         {{ article.comment_set.count }} {% trans 'comments' %}
                     {% else %}
-                        {% trans 'comment' %}
+                        0 {% trans 'comment' %}
                     {% endif %}
                     </span>
                 </a>
@@ -47,26 +48,20 @@
     </header><!-- .entry-header -->
 
     <div class="entry-content" itemprop="articleBody">
-        {% if  isindex %}
+        {% if isindex %}
             {{ article.body|custom_markdown|escape|truncatechars_content }}
-            <p class='read-more'><a
-                    href=' {{ article.get_absolute_url }}'>Read more</a></p>
+            <p class='read-more'><a href=' {{ article.get_absolute_url }}'>Read more</a></p>
         {% else %}
-
             {% if article.show_toc %}
                 {% get_markdown_toc article.body as toc %}
                 <b>{% trans 'toc' %}:</b>
                 {{ toc|safe }}
-
                 <hr class="break_line"/>
             {% endif %}
             <div class="article">
-
                 {{ article.body|custom_markdown|escape }}
-
             </div>
         {% endif %}
-
     </div><!-- .entry-content -->
 
     {% load_article_metas article user %}
