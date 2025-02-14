@@ -18,12 +18,11 @@
                    class="url">{{ comment_item.author.username }}
                 </a>
             </cite>
-
         </div>
-
         <div class="comment-meta commentmetadata">
             {{ comment_item.creation_time }}
         </div>
+
         <p>
             {% if comment_item.parent_comment %}
                 <div>回复 <a
@@ -36,7 +35,8 @@
 
         <div class="reply"><a rel="nofollow" class="comment-reply-link"
                               href="javascript:void(0)" data-pk="{{ comment_item.pk }}"
-                              aria-label="回复给{{ comment_item.author.username }}">回复</a></div>
+                              aria-label="回复给{{ comment_item.author.username }}">回复</a>
+        </div>
     </div>
 
 </li><!-- #comment-## -->

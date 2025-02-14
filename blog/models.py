@@ -136,6 +136,7 @@ class Article(BaseModel):
 
     def viewed(self):
         self.views += 1
+        # 异步容易出现问题, 应使用原子操作
         self.save(update_fields=['views'])
 
     def comment_list(self):

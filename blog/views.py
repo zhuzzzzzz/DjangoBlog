@@ -115,7 +115,7 @@ class ArticleDetailView(DetailView):
 
     def get_object(self, queryset=None):
         obj = super(ArticleDetailView, self).get_object()
-        obj.viewed()
+        obj.viewed()  # 在这里更新访问量???
         self.object = obj
         return obj
 

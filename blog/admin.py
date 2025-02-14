@@ -54,7 +54,7 @@ class ArticlelAdmin(admin.ModelAdmin):
         'type',
         'article_order')
     list_display_links = ('id', 'title')
-    list_filter = ('status', 'type', 'category')
+    list_filter = ('status', 'type', 'category', 'tags')
     filter_horizontal = ('tags',)
     exclude = ('creation_time', 'last_modify_time')
     view_on_site = True
